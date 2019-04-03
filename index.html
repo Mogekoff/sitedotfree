@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MEOOOW!!</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="index.js"></script>
+</head>
+<body>
+
+	<?php 
+		$db = new mysqli("localhost", "root", "ldw;qodk2", "users");
+		
+		$db->query("ALTER TABLE `users` AUTO_INCREMENT=0");
+
+		$db->query("ALTER TABLE `visitors` AUTO_INCREMENT=0");
+
+		#$db->query("INSERT INTO `users` VALUES (NULL, 'login', 'pass', 'email@example.com')");
+
+		$db->query("INSERT INTO `visitors` VALUES (NULL, '".GetIP()."', '".GetCountry()."')");
+
+	?>
+
+	<h3>твой ойпишнег: <?php echo GetIP(); ?> </h3>
+	<h3>сТРоНа: <?php echo GetCountry(); ?> </h3>
+	<h3>меня п0сетило: <?php echo mysqli_fetch_array($db->query("SELECT count FROM visitors ORDER BY count DESC LIMIT 1"))[0]; ?> </h3>
+
+</body>
+</html>
+
+	<?php 
+		function GetIP() {
+		  if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+		    $ip = $_SERVER['HTTP_CLIENT_IP'];
+		  } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+		    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		  } else {
+		    $ip = $_SERVER['REMOTE_ADDR'];
+		  }
+		  return $ip;
+		}
+		
+		function GetCountry() {
+			return $_SERVER["HTTP_ACCEPT_LANGUAGE"][0].$_SERVER["HTTP_ACCEPT_LANGUAGE"][1];
+		}
+	?>
