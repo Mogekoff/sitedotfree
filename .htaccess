@@ -1,5 +1,8 @@
 AddType application/x-httpd-php .php .htm .html
 
+
+
+
 ErrorDocument 404 /errors/404.html
 #ErrorDocument 500 "The server made a boo boo."
 #ErrorDocument 404 "/cgi-bin/missing_handler.pl"

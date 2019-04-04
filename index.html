@@ -3,8 +3,8 @@
 <head>
 	<title>MEOOOW!!</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<script src="index.js"></script>
+	<link rel="stylesheet" type="text/css" href="/styles/index.css">
+	<script src="/scripts/index.js"></script>
 </head>
 <body>
 
@@ -19,7 +19,10 @@
 
 		$db->query("INSERT INTO `visitors` VALUES (NULL, '".GetIP()."', '".GetCountry()."')");
 
+		#phpinfo();
 	?>
+
+	<h3><?php system("./scripts/test.fcgi"); ?></h3>
 
 	<h3>твой ойпишнег: <?php echo GetIP(); ?> </h3>
 	<h3>сТРоНа: <?php echo GetCountry(); ?> </h3>
