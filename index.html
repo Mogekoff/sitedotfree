@@ -4,12 +4,12 @@
 	<title>MEOOOW!!</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="/styles/index.css">
-	<script src="/scripts/index.js"></script>
+	
 </head>
 <body>
 
 	<?php 
-		$db = new mysqli("localhost", "root", "ldw;qodk2", "users");
+		$db = new mysqli("localhost", "root", "ldw;qodk2", "sitedotfree");
 		
 		$db->query("ALTER TABLE `users` AUTO_INCREMENT=0");
 
@@ -21,13 +21,27 @@
 
 		#phpinfo();
 	?>
+	<img src="pregnantcavy.jpg">
+	<img src="anime.jpg">
 
-	<h3><?php system("./scripts/test.fcgi"); ?></h3>
+	<h3><?php system('/var/www/yufo.cf/scripts/fcgi/ruptor/ruptor.fcgi encrypt -tt "Hello World" en caesar 4'); ?></h3>
 
 	<h3>твой ойпишнег: <?php echo GetIP(); ?> </h3>
 	<h3>сТРоНа: <?php echo GetCountry(); ?> </h3>
 	<h3>меня п0сетило: <?php echo mysqli_fetch_array($db->query("SELECT count FROM visitors ORDER BY count DESC LIMIT 1"))[0]; ?> </h3>
 
+	<img src="jerry.gif">
+	<img src="curvebezier.gif">
+	<img src="ass2d.gif">
+	<img src="dancinghammond.gif">
+	<img src="dancingquestion.gif">
+	<img src="jerry.gif">
+	<img src="lemur.gif">
+	<img src="pepsifrog.gif">
+	<img src="putin.gif">
+	<img src="rubikcube.gif">
+	<img src="walkbear.gif">
+	<script type="text/javascript" src="scripts/index.js"></script>
 </body>
 </html>
 
