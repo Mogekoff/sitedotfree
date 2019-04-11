@@ -1,8 +1,5 @@
-# Import your application as:
-# from wsgi import application
-# Example:
 from wsgi import application
-# Import CherryPy
+
 import cherrypy
 if __name__ == '__main__':
 	# Mount the application
@@ -24,11 +21,16 @@ if __name__ == '__main__':
 	server.subscribe()
 	# Example for a 2nd server (same steps as above):
 	# Remember to use a different port
-	# server2             = cherrypy._cpserver.Server()
-	# server2.socket_host = "0.0.0.0"
-	# server2.socket_port = 8081
-	# server2.thread_pool = 30
-	# server2.subscribe()
+	server2             = cherrypy._cpserver.Server()
+	server2.socket_host = "0.0.0.0"
+	server2.socket_port = 8001
+	server2.thread_pool = 30
+	
+	server.ssl_module            = 'pyopenssl'
+	server.ssl_certificate       = '/etc/letsencrypt/live/yufo.cf/fullchain.pem'
+	server.ssl_private_key       = '/etc/letsencrypt/live/yufo.cf/privkey.pem'
+	server.ssl_certificate_chain = '/etc/letsencrypt/live/yufo.cf/chain.pem'
+	server2.subscribe()
 	# Start the server engine (Option 1 *and* 2)
 	cherrypy.engine.start()
 	cherrypy.engine.block()
